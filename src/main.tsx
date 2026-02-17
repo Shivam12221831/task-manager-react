@@ -9,9 +9,9 @@ import { EditTask } from './pages/EditTask.tsx';
 import { ViewTask } from './pages/ViewTask.tsx';
 import { loaderDashboard } from './router/loaderDashboard.ts';
 import { loaderTasklist } from './router/loaderTasklist.ts';
-import { loaderEditTask } from './router/loaderEdittask.ts';
 import { actionDeleteTask } from './router/actionDeleteTask.ts';
-import { loaderViewTask } from './router/loaderViewtask.ts';
+import { loaderViewTask } from './router/loaderViewTask.ts';
+import { loaderEditTask } from './router/loaderEditTask.ts';
 
 const router = createBrowserRouter([
     {
