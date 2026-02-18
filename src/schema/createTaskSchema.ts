@@ -14,7 +14,7 @@ export const createTaskSchema = Yup.object({
                 .oneOf(["low", "medium", "high", "urgent"], "Priority must be low, medium, high, or urgent")
                 .required("Priority is required"),
     dueDate: Yup.string()
-                .matches(/^\d{4}-\d{2}-\d{2}$/, "Date must be in DD-MM-YYYY format")
+                .matches(/^\d{4}-\d{2}-\d{2}$/, "Date must be in MM-DD-YYYY format")
                 .optional()
                 .test("check-date", "Date must be today or in the future", (val) => {
                     if(!val) return true;
