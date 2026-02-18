@@ -76,21 +76,11 @@ export const deleteTaskFromFirebase = async(id: string) => {
 
 export const getFilteredTasksFromFirebase = async({status, category, priority} : FilteredPropsType) => {
     try{
-        // let q = query(collection(db, "tasks"));
-        // if(status) q = query(q, where("status", "==", status));
-        // if(category) q = query(q, where("category", "==", category));
-        // if(priority) q = query(q, where("priority", "==", priority));
         let q: Query = collection(db, "tasks");
         const conditions = [];
-        if (status) {
-            conditions.push(where("status", "==", status));
-        }
-        if (category) {
-            conditions.push(where("category", "==", category));
-        }
-        if (priority) {
-            conditions.push(where("priority", "==", priority));
-        }
+        if (status) conditions.push(where("status", "==", status));
+        if (category) conditions.push(where("category", "==", category));
+        if (priority) conditions.push(where("priority", "==", priority));
         if (conditions.length > 0) {
             q = query(q, ...conditions);
         }
