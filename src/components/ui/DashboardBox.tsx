@@ -14,7 +14,7 @@ export const DashboardBox = ({ title, value, type }: DashboardBoxPropsType) => {
             </div>
             {type === "insights" ? (
                 <div className="flex-1 flex flex-col">
-                    {Object.keys(value.statusObj).length === 0 || Object.keys(value.priorityObj).length === 0 ? (
+                    {!Object.values(value.statusObj).some((v) => v>0) && !Object.values(value.priorityObj).some((v) => v>0) ? (
                         <div className="flex items-center justify-center flex-1">
                             <div className="text-center flex justify-center items-center gap-2">
                                 <IoPieChartSharp size={20} className="text-slate-500"/>

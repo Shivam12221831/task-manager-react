@@ -43,10 +43,10 @@ export const PieChart = ({ chartObj, chartTitle }: PieChartPropsType) => {
 
 
     return (
-        <div className="w-full mt-1">
-            {/* <h3 className="text-center text-sm text-slate-800">
+        <div className="w-full">
+            <h3 className="text-center text-sm text-slate-800 mt-1">
                 {chartTitle === "status" ? "Status" : "Priority"}
-            </h3> */}
+            </h3>
             <Chart
                 chartType="PieChart"
                 width="100%"

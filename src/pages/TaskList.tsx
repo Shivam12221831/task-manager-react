@@ -36,7 +36,10 @@ export const TaskList = () => {
     const rowsToShow = debouncedSearch.trim() ? allTasks.filter(task => task.title.toLowerCase().includes(debouncedSearch.toLowerCase())) : allTasks;
 
     useEffect(() => {
-        if(!status && !category && !priority) return;
+        if(!status && !category && !priority) {
+            setAllTasks(loaderTasks);
+            return;
+        };
         const fetchFilteredTasks = async () => {
             try{
                 setSearch("");
@@ -48,12 +51,13 @@ export const TaskList = () => {
             }
         } 
         fetchFilteredTasks();
-    }, [status, category, priority]);
+    }, [status, category, priority, loaderTasks]);
 
     function handleClearFilter(){
         setStatus("");
         setCategory("");
         setPriority("");
+        setSearch("");
         setAllTasks(loaderTasks);
     }
 
