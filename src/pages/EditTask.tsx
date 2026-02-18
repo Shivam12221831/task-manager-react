@@ -65,7 +65,7 @@ export const EditTask = () => {
 
                                     <div>
                                         <label htmlFor="dueDate" className="create-task-label">Due Date</label>
-                                        <Field type="date" name="dueDate" id="dueDate" className="create-task-field bg-white"/>
+                                        <Field type="date" name="dueDate" id="dueDate" placeholder="Select date" className="create-task-field bg-white"/>
                                         <ErrorMessage name="dueDate" component="div" className="create-task-error"/>
                                     </div>
                                 </div>
