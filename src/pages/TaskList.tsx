@@ -97,7 +97,7 @@ export const TaskList = () => {
                 <div className="bg-white rounded-lg shadow-sm overflow-hidden mt-5">
                     <div className="border-b-2 border-slate-200 grid grid-cols-1 sm:grid-cols-2 md:flex justify-evenly items-center gap-3 md:gap-1 py-5 md:py-2 px-5 md:h-15">
                         <div className="flex justify-center items-center border rounded-sm border-slate-200 col-span-1 h-7">
-                            <input type="text" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search title" className="rounded-l-sm pl-2 text-sm h-full focus:outline-red-700 w-full md:w-60"/>
+                            <input type="text" name="search" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search title" className="rounded-l-sm pl-2 text-sm h-full focus:outline-red-700 w-full md:w-60"/>
                             <p className="px-1 rounded-r-sm text-sm h-7 border-l border-l-red-700 bg-red-700 text-white flex items-center"><IoSearch size={20}/></p>
                         </div>
                         <div>

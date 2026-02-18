@@ -12,11 +12,13 @@ import { loaderTasklist } from './router/loaderTasklist.ts';
 import { actionDeleteTask } from './router/actionDeleteTask.ts';
 import { loaderViewTask } from './router/loaderViewTask.ts';
 import { loaderEditTask } from './router/loaderEditTask.ts';
+import { HydrateFallbackElement } from './components/ui/HydrateFallbackElement.tsx';
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <App />,
+        hydrateFallbackElement: <HydrateFallbackElement />,
         children: [
             {
                 // path: "dashboard",
