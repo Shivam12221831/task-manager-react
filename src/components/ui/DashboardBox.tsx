@@ -13,7 +13,7 @@ export const DashboardBox = ({ title, value, type }: DashboardBoxPropsType) => {
                 <h3 className="dash-box-label">{title}</h3>
             </div>
             {type === "insights" ? (
-                <div className="flex-1 flex flex-col">
+                <div className="flex-1 flex flex-col pt-2">
                     {!Object.values(value.statusObj).some((v) => v>0) && !Object.values(value.priorityObj).some((v) => v>0) ? (
                         <div className="flex items-center justify-center flex-1">
                             <div className="text-center flex justify-center items-center gap-2">

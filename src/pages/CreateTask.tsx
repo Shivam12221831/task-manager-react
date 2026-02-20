@@ -28,9 +28,9 @@ export const CreateTask = () => {
     return (
         <div className="py-4 px-4">
             <div className="max-w-xl mx-auto">
-                <PageHeader title="Create Task" subTitle="Turn your plans into actionable tasks by filling in the information below" />
+                <PageHeader title="Add Task" subTitle="Turn your plans into actionable tasks by filling in the information below" showButton={false}/>
 
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-lg shadow p-6 mt-5">
                     <Formik
                         initialValues={blankTask as CreateTaskFormType}
                         validationSchema={createTaskSchema}

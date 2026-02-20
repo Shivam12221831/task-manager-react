@@ -68,6 +68,9 @@ button:focus-visible {
 } */
 
 @import "tailwindcss";
+@theme {
+  --font-sans: "Poppins", sans-serif;
+}
 
 /* .nav-link{
     font-weight: 600;

@@ -1,4 +1,5 @@
 export type PageHeaderPropsType = {
     title: string,
-    subTitle: string
+    subTitle: string,
+    showButton: boolean
 }

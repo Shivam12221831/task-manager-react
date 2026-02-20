@@ -92,7 +92,7 @@ export const TaskList = () => {
     return (
         <div className="py-3 sm:py-4 px-3 sm:px-4 lg:px-6">
             <div className="max-w-5xl mx-auto">
-                <PageHeader title="All Tasks" subTitle="Manage and track all your tasks in one place" />
+                <PageHeader title="All Tasks" subTitle="Manage and track all your tasks in one place" showButton={true}/>
 
                 <div className="bg-white rounded-lg shadow-sm overflow-hidden mt-5">
                     <div className="border-b-2 border-slate-200 grid grid-cols-1 sm:grid-cols-2 md:flex justify-evenly items-center gap-3 md:gap-1 py-5 md:py-2 px-5 md:h-15">

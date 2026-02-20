@@ -9,16 +9,16 @@ function App() {
     const [isOpen, setIsOpen] = useState<boolean>(false);
 
     return (
-        <div className="font-serif">
+        <div className="font-sans">
             <div className="w-full h-14 border-b border-slate-200 bg-white/80 backdrop-blur-sm mb-6">
                 <div className="max-w-5xl mx-auto flex items-center justify-between px-5 lg:px-0 py-3">
-                    <div className="flex items-center gap-3">
+                    <NavLink to={"/"} className="flex items-center gap-3">
                         <GoTasklist size={20} />
                         <h1 className="text-2xl font-bold">Task Manager</h1>
-                    </div>
+                    </NavLink>
                     <nav className="hidden md:flex gap-8">
                         <NavLink to="/" end className="nav-link">Dashboard</NavLink>
-                        <NavLink to="/tasks/create" className="nav-link">Create Task</NavLink>
+                        {/* <NavLink to="/tasks/create" className="nav-link">Create Task</NavLink> */}
                         <NavLink to="/tasks" end className="nav-link">Tasks</NavLink>
                     </nav>
 
@@ -32,7 +32,7 @@ function App() {
                         <div className="absolute top-14 left-0 w-full bg-slate-50 md:hidden mb-3">
                             <div className="flex flex-col justify-center items-center gap-2 py-3">
                                 <NavLink to="/" onClick={() => setIsOpen(false)} end className="nav-link">Dashboard</NavLink>
-                                <NavLink to="/tasks/create" onClick={() => setIsOpen(false)} className="nav-link">Create Task</NavLink>
+                                {/* <NavLink to="/tasks/create" onClick={() => setIsOpen(false)} className="nav-link">Create Task</NavLink> */}
                                 <NavLink to="/tasks" onClick={() => setIsOpen(false)} end className="nav-link">Tasks</NavLink>
                             </div>
                         </div>

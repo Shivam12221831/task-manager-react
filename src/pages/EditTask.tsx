@@ -29,9 +29,9 @@ export const EditTask = () => {
     return (
         <div className="py-4 px-4">
             <div className="max-w-xl mx-auto">
-                <PageHeader title="Edit Task" subTitle="Make quick updates to the task so it always stays accurate and relevant" />
+                <PageHeader title="Edit Task" subTitle="Make quick updates to the task so it always stays accurate and relevant" showButton={false}/>
 
-                <div className="bg-white rounded-lg shadow p-6">
+                <div className="bg-white rounded-lg shadow p-6 mt-5">
                     <Formik
                         initialValues={task}
                         validationSchema={editTaskSchema}
