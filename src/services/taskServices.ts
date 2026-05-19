@@ -1,4 +1,4 @@
-import { db } from "../firebase";
+import { db, ensureAuth } from "../firebase";
 import { addDoc, collection, deleteDoc, doc, getDoc, getDocs, orderBy, Query, query, serverTimestamp, Timestamp, updateDoc, where } from "firebase/firestore";
 import type { CreateTaskFormType } from "../types/createTaskFormType";
 import type { AllTasksType } from "../types/allTasksType";
@@ -6,6 +6,7 @@ import type { FilteredPropsType } from "../types/filteredPropsType";
 
 export const addTaskToFirebase = async (values : CreateTaskFormType) => {
     try{
+        await ensureAuth();
         const formData = {...values, status: "pending", createdAt: Timestamp.now(), updatedAt: Timestamp.now()};
         return await addDoc(collection(db, "tasks"), formData);
     } catch(err){
@@ -16,6 +17,7 @@ export const addTaskToFirebase = async (values : CreateTaskFormType) => {
 
 export const getAllTasksFromFirebase = async () => {
     try{
+        await ensureAuth();
         const querySnapshot = await getDocs(query(collection(db, "tasks"), orderBy("updatedAt", "desc"), orderBy("createdAt", "desc")));
         const allTasks: AllTasksType[] = [];
         querySnapshot.forEach((doc) => {
@@ -40,6 +42,7 @@ export const getAllTasksFromFirebase = async () => {
 
 export const getTaskFromFirebase = async(id: string) => {
     try{
+        await ensureAuth();
         const querySnapshot = await getDoc(doc(collection(db, "tasks"), id));
         // console.log(querySnapshot);
         return {...querySnapshot.data(), id : querySnapshot.id};
@@ -51,6 +54,7 @@ export const getTaskFromFirebase = async(id: string) => {
 
 export const editTaskToFirebase = async(values: CreateTaskFormType, id: string) => {
     try{
+        await ensureAuth();
         const newTaskData = {...values, updatedAt: serverTimestamp()};
         if(!id) throw new Error("Task Id is required");
         console.log("Task data from editTask service :", newTaskData);
@@ -64,6 +68,7 @@ export const editTaskToFirebase = async(values: CreateTaskFormType, id: string) 
 
 export const deleteTaskFromFirebase = async(id: string) => {
     try{
+        await ensureAuth();
         const deletedTask = await deleteDoc(doc(db, "tasks", id));
         console.log(deletedTask);
         console.log("Task deleted successfully!");
@@ -76,6 +81,7 @@ export const deleteTaskFromFirebase = async(id: string) => {
 
 export const getFilteredTasksFromFirebase = async({status, category, priority} : FilteredPropsType) => {
     try{
+        await ensureAuth();
         let q: Query = collection(db, "tasks");
         const conditions = [];
         if (status) conditions.push(where("status", "==", status));
@@ -110,6 +116,7 @@ export const getFilteredTasksFromFirebase = async({status, category, priority} :
 }
 
 export const updateTaskStatus = async(id: string, status: string) => {
+    await ensureAuth();
     const updatedTask = await updateDoc(doc(db, "tasks", id), { status: status, updatedAt : Timestamp.now()});
     console.log("update value from update Status service: ", updatedTask);
     return updatedTask;

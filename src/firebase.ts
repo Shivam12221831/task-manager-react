@@ -1,5 +1,6 @@
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAuth, onAuthStateChanged, signInAnonymously, type User } from "firebase/auth";
 
 const firebaseConfig = {
     apiKey: "AIzaSyD7RNTXX9Rcp8uMCLeT3wDjY4_0qxC_O2U",
@@ -13,3 +14,33 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const db = getFirestore(app);
+export const auth = getAuth(app);
+
+let ensureAuthPromise: Promise<User> | null = null;
+
+export const ensureAuth = async (): Promise<User> => {
+  if (auth.currentUser) return auth.currentUser;
+  if (!ensureAuthPromise) {
+    ensureAuthPromise = (async () => {
+      await signInAnonymously(auth);
+      return await new Promise<User>((resolve, reject) => {
+        const unsubscribe = onAuthStateChanged(
+          auth,
+          (user) => {
+            if (user) {
+              unsubscribe();
+              resolve(user);
+            }
+          },
+          (error) => {
+            unsubscribe();
+            reject(error);
+          }
+        );
+      });
+    })().finally(() => {
+      ensureAuthPromise = null;
+    });
+  }
+  return ensureAuthPromise;
+};

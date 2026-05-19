@@ -1,8 +1,9 @@
 import { collection, doc, writeBatch, Timestamp } from "firebase/firestore";
-import { db } from "../firebase";
+import { db, ensureAuth } from "../firebase";
 
 export const seed500TasksToFirebase = async () => {
   try {
+    await ensureAuth();
     const batch = writeBatch(db);
     const tasksRef = collection(db, "tasks");
 
